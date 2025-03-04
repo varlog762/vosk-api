@@ -6,13 +6,13 @@ RUN apt-get update && apt-get install -y \
   apt-get clean
 
 # Устанавливаем vosk-api
-RUN pip3 install vosk
+RUN pip3 install vosk flask
 
 # Загружаем модель (замени ссылку на нужную)
 WORKDIR /opt/vosk
-RUN wget https://alphacephei.com/vosk/models/vosk-model-en-us-0.42-gigaspeech.zip && \
-  unzip vosk-model-en-us-0.42-gigaspeech.zip && \
-  rm vosk-model-en-us-0.42-gigaspeech.zip   
+# RUN wget https://alphacephei.com/vosk/models/vosk-model-en-us-0.42-gigaspeech.zip && \
+#   unzip vosk-model-en-us-0.42-gigaspeech.zip && \
+#   rm vosk-model-en-us-0.42-gigaspeech.zip   
 
 # Копируем скрипт для запуска сервиса
 COPY server.py /opt/vosk/server.py

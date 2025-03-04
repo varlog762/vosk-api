@@ -1,0 +1,19 @@
+services:
+  vosk-api:
+    image: vosk-api:latest
+    ports:
+      - "2700:2700"
+    volumes:
+      - vosk-models:/opt/vosk/models
+      - ./:/opt/vosk/
+    restart: unless-stopped
+    networks:
+      - ai-buddy
+
+networks:
+  ai-buddy:
+    driver: bridge
+
+volumes:
+  vosk-models:
+    driver: local
