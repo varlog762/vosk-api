@@ -1,11 +1,13 @@
 services:
   vosk-api:
-    image: vosk-api:latest
+    build: .
     ports:
       - "2700:2700"
     volumes:
+      - .:/opt/vosk/
       - vosk-models:/opt/vosk/models
-      - ./:/opt/vosk/
+    environment:
+      - FLASK_ENV=development
     restart: unless-stopped
     networks:
       - ai-buddy

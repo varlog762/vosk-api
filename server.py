@@ -1,18 +1,22 @@
 from vosk import Model, KaldiRecognizer
 import wave
 import json
-from flask import Flask, request
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
 # Загружаем модель Vosk
 # model = Model("vosk-model-small-en-us-0.15")
 
-@app.route("/transcribe", methods=["GET"])
+@app.route("/test", methods=["GET"])
 def test():
+    return jsonify(message="hello world")
+
+@app.route("/transcribe", methods=["GET"])
+def transcribe():
     print('it is work!')
-    return json.loads("it is work!")
-    
+    return jsonify(message="it is work!")
+
 # def transcribe():
     # if "audio" not in request.files:
     #     return {"error": "No audio file provided"}, 400
