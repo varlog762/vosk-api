@@ -5,7 +5,7 @@ services:
       - "2700:2700"
     volumes:
       - .:/opt/vosk/
-      - vosk-models:/opt/vosk/models
+      # - vosk-models:/opt/vosk/modelsz
     environment:
       - FLASK_ENV=development
     restart: unless-stopped
@@ -16,6 +16,6 @@ networks:
   ai-buddy:
     driver: bridge
 
-volumes:
-  vosk-models:
-    driver: local
+# volumes:
+#   vosk-models:
+#     driver: local
